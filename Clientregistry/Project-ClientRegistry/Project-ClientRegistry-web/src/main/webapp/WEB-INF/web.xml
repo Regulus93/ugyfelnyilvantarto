@@ -4,6 +4,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <welcome-file-list>
+        <welcome-file>login.xhtml</welcome-file>
+    </welcome-file-list>
     <session-config>
         <session-timeout>
             30
@@ -17,51 +20,21 @@
             <form-error-page>/error.html</form-error-page>
         </form-login-config>
     </login-config>
-<!--    <security-role>
+    <security-role>
         <role-name>USER</role-name>
-    </security-role>
-        <security-role>
-        <role-name>MANAGER</role-name>
     </security-role>
     <security-role>
         <role-name>ADMIN</role-name>
     </security-role>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Admin user</web-resource-name>
-            <url-pattern>/private/admin.html</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>ADMIN</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <security-constraint>
-        <web-resource-collection>
             <web-resource-name>User</web-resource-name>
             <description/>
-            <url-pattern>/private/*</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
+            <url-pattern>*/home.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>ADMIN</role-name>
             <role-name>USER</role-name>
         </auth-constraint>
     </security-constraint>
-        <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Admin manager user</web-resource-name>
-            <description/>
-            <url-pattern>/private/index.html</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>ADMIN</role-name>
-            <role-name>MANAGER</role-name>
-            <role-name>USER</role-name>
-        </auth-constraint>
-    </security-constraint>-->
 </web-app>

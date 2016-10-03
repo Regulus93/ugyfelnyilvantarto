@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:clientregistry-component="http://xmlns.jcp.org/jsf/composite/clientregistry/component">
-    
+      xmlns:clientregistry-component="http://xmlns.jcp.org/jsf/composite/clientregistry/component"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -53,6 +54,23 @@
                     </div>
                     <div class="col-sm-3">
                         <h:button outcome="editProfile" class="btn btn-default btn-color-default center-block btn-space btn-edit active" value="Edit profile"/>
+                        <h:form id="form" enctype="multipart/form-data">
+                            <h:messages/>
+                            <h:panelGrid columns="2">
+                                <h:outputText value="File:"/>
+                                <h:inputFile id="file" value="#{managePicture.uploadedFile}"
+                                             validator="#{managePicture.validateFile}"/>
+                            </h:panelGrid>
+
+                            <h:commandButton value="Upload File" action="#{managePicture.uploadFile}"/>
+                            <h:commandButton value="Upload File (Ajax)" action="#{managePicture.uploadFile}">
+                                <f:ajax execute="file" render="@all"/>
+                            </h:commandButton>
+
+                            <h:panelGrid id="content" columns="1">
+                                <h:graphicImage value="http://localhost:8080/images/dummy.jpg" />
+                            </h:panelGrid>
+                        </h:form>
                     </div>
                 </div>
                 <!--
@@ -67,7 +85,7 @@
             <!--
             END OF FOOTER
             -->
-            
+
         </div>
         <!--
         END OF MAIN CONTAINER

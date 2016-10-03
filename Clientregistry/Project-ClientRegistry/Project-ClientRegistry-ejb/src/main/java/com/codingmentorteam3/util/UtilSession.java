@@ -11,24 +11,25 @@ import javax.servlet.http.HttpSession;
 public class UtilSession {
 
     public static HttpSession getSession() {
-        return (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        return session;
     }
 
-//    public static HttpServletRequest getRequest() {
-//        return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-//    }
-//
-//    public static String getUserName() {
-//        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-//        return session.getAttribute("username").toString();
-//    }
-//
-//    public static String getUserId() {
-//        HttpSession session = getSession();
-//        if (session != null) {
-//            return (String) session.getAttribute("userid");
-//        }
-//        return null;
-//    }
+    public static HttpServletRequest getRequest() {
+        return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+    }
+
+    public static String getUserName() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        return session.getAttribute("username").toString();
+    }
+
+    public static String getUserId() {
+        HttpSession session = getSession();
+        if (session != null) {
+            return (String) session.getAttribute("userid");
+        }
+        return null;
+    }
 
 }

@@ -19,6 +19,8 @@
     <composite:implementation>
         <div class="col-sm-2 col-sm-offset-1">
             <img alt="profile-1" class="profile" src="../img/profile.png"/>
+            <br/>
+            <h:outputText value="#{sessionScope['user'].username}"/>
             <h:link outcome="home" class="btn btn-default btn-color-default center-block btn-space #{cc.attrs.home}" value="Home"/>
             <h:link outcome="myInvitations" class="btn btn-default btn-color-default center-block btn-space #{cc.attrs.myInvitations}" value="My invitations"/>
             <h:link outcome="myEvents" class="btn btn-default btn-color-default center-block btn-space #{cc.attrs.myEvents}" value="My events"/>
@@ -30,7 +32,9 @@
             <hr/>
             <h:link outcome="manageUsers" class="btn btn-default btn-color-default center-block btn-space #{cc.attrs.manageUsers}" value="Manage users"/>
             <hr/>
-            <h:commandButton class="btn btn-info center-block btn-color-register" type="submit" value="Logout" action="#{visitorCountBean.logout()}"/>
+            <h:form>
+            <h:commandButton class="btn btn-info center-block btn-color-register" type="submit" value="Logout" action="#{authController.logout()}"/>
+            </h:form>
         </div>
     </composite:implementation>
 
