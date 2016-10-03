@@ -49,28 +49,25 @@
                 MAIN CONTENT
                 -->
                 <div class="col-xs-8">
-                    <div class="col-sm-9">
-                        <h1>profile.xhtml</h1>
-                    </div>
-                    <div class="col-sm-3">
-                        <h:button outcome="editProfile" class="btn btn-default btn-color-default center-block btn-space btn-edit active" value="Edit profile"/>
+                    <div class="col-sm-5">
                         <h:form id="form" enctype="multipart/form-data">
                             <h:messages/>
-                            <h:panelGrid columns="2">
+                            <h:panelGrid columns="1">
                                 <h:outputText value="File:"/>
                                 <h:inputFile id="file" value="#{managePicture.uploadedFile}"
                                              validator="#{managePicture.validateFile}"/>
                             </h:panelGrid>
 
-                            <h:commandButton value="Upload File" action="#{managePicture.uploadFile}"/>
-                            <h:commandButton value="Upload File (Ajax)" action="#{managePicture.uploadFile}">
+                            <h:commandButton value="Upload File" action="#{managePicture.uploadFile}">
                                 <f:ajax execute="file" render="@all"/>
                             </h:commandButton>
-
-                            <h:panelGrid id="content" columns="1">
-                                <h:graphicImage value="http://localhost:8080/images/dummy.jpg" />
-                            </h:panelGrid>
                         </h:form>
+                    </div>
+                    <div class="col-sm-9">
+                        <h1>profile.xhtml</h1>
+                    </div>
+                    <div class="col-sm-3">
+                        <h:button outcome="editProfile" class="btn btn-default btn-color-default center-block btn-space btn-edit active" value="Edit profile"/>
                     </div>
                 </div>
                 <!--

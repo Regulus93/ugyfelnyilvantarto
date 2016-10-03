@@ -52,7 +52,7 @@ public class AuthController {
             request.login(username, password);
         } catch (ServletException e) {
             LOG.log(Level.SEVERE, "{0} failed to login", username);
-//
+
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Login failed."));
             return "login.xhtml";
         }

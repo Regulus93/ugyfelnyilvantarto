@@ -13,7 +13,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.servlet.http.Part;
-import org.jboss.logging.Logger;
 
 /**
  *
@@ -23,18 +22,17 @@ import org.jboss.logging.Logger;
 @ViewScoped
 public class ManagePicture {
 
-        private Part uploadedFile;
-    private String fileContent;
+    private Part uploadedFile;
 
     public void validateFile(FacesContext ctx, UIComponent comp, Object value) {
         List<FacesMessage> msgs = new ArrayList<>();
         Part file = (Part) value;
-//        if (file.getSize() > 1024) {
-//            msgs.add(new FacesMessage("file too big"));
-//        }
-//        if (!"text/plain".equals(file.getContentType())) {
-//            msgs.add(new FacesMessage("not a text file"));
-//        }
+        if (file.getSize() > 1048576) {
+            msgs.add(new FacesMessage("File bigger than a limit (1 MB)."));
+        }
+        if (!"image/jpeg".equals(file.getContentType())) {
+            msgs.add(new FacesMessage("Please select a file with type: .jpeg or .jpg."));
+        }
         if (!msgs.isEmpty()) {
             throw new ValidatorException(msgs);
         }
@@ -43,7 +41,7 @@ public class ManagePicture {
     public void uploadFile() throws IOException {
         try {
           File uploads = new File(System.getProperty("jboss.home.dir"), "\\standalone\\images");
-            System.out.println(uploads.toString());
+            System.out.println(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
             File file = new File(uploads, "dummy.jpg");
             InputStream input = uploadedFile.getInputStream();
             Files.copy(input, file.toPath());
