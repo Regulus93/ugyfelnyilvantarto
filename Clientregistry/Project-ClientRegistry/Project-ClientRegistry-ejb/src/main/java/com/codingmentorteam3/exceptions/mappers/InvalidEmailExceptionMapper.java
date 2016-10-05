@@ -13,7 +13,7 @@ import javax.ws.rs.ext.ExceptionMapper;
  *
  * @author Zsolt
  */
-public class InvalidEmailExceptionMapper implements ExceptionMapper<InvalidEmailException>{
+public class InvalidEmailExceptionMapper implements ExceptionMapper<InvalidEmailException> {
 
     @Inject
     private Logger logger;

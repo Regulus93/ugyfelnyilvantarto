@@ -19,10 +19,8 @@ import javax.validation.constraints.NotNull;
 @ManagedBean(name = "connectionChannelBean")
 public class ConnectionChannelBean {
 
-    @NotNull
     private ConnectionChannelType type;
 
-    @NotNull
     private String value;
 
     @NotNull

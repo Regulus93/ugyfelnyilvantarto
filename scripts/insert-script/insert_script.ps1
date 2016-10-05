@@ -7,7 +7,6 @@ if($foldersInPSQL.length -eq 1 -And $foldersInPSQL -match "[0-9].*") {
 cd .\$foldersInPSQL\bin
 }
 
-
 .\psql.exe -f "$runningPath\insert_person_table.sql" -U postgres "dbname=clientregistry password=admin"
 .\psql.exe -f "$runningPath\insert_address.sql" -U postgres "dbname=clientregistry password=admin"
 .\psql.exe -f "$runningPath\insert_user_table.sql" -U postgres "dbname=clientregistry password=admin"

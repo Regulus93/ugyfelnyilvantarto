@@ -1,7 +1,6 @@
 package com.codingmentorteam3.daos;
 
 import com.codingmentorteam3.entities.Address;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 
@@ -29,5 +28,5 @@ public class AddressDaoImpl extends AbstractDao<Address> {
             return null;
         }
     }
-    
+
 }

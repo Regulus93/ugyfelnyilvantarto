@@ -19,7 +19,7 @@ import org.mockito.Mockito;
 
 /**
  *
- * @author Regulus
+ * @author Bicsak Dani
  */
 public class EventBeanTest {
 
@@ -43,11 +43,11 @@ public class EventBeanTest {
     @Before
     public void setUp() {
         Date startDate = new Date();
-        startDate.setTime(startDate.getTime()+1000);
+        startDate.setTime(startDate.getTime() + 1000);
         Date endDate = new Date();
         endDate.setTime(startDate.getTime() + 100000);
 
-        event = new EventBean("Example event", "Desc", Mockito.mock(Address.class),EventType.MEETING, startDate, endDate, Mockito.mock(Company.class));
+        event = new EventBean("Example event", "Desc", Mockito.mock(Address.class), EventType.MEETING, startDate, endDate, Mockito.mock(Company.class));
     }
 
     @After
@@ -84,26 +84,6 @@ public class EventBeanTest {
     @Test
     public void shouldViolateTitleLengthValidation() {
         event.setTitle("T");
-        Set<ConstraintViolation<EventBean>> violations
-                = validator.validate(event);
-        assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.Size.message}", violations.iterator().next().getMessageTemplate()
-        );
-    }
-
-    @Test
-    public void shouldViolateDescriptionLengthValidation() {
-        String newDesc = "ssssssssssssssssssssssssssssssssssssssssssssss"
-                + "sssssssssssssssssssssssssssssssssssssssssssssssssssss"
-                + "sssssssssssssssssssssssssssssssssssssssssssssssssssss"
-                + "sssssssssssssssssssssssssssssssssssssssssssssssssssss"
-                + "ssssssssssssssssssssssssssssssssssssssssssssss" 
-                + "ssssssssssssssssssssssssssssssssssssssssssssss"
-                + "sssssssssssssssssssssssssssssssssssssssssssssssssssss"
-                + "sssssssssssssssssssssssssssssssssssssssssssssssssssss"
-                + "sssssssssssssssssssssssssssssssssssssssssssssssssssss"
-                + "ssssssssssssssssssssssssssssssssssssssssssssss";
-        event.setDescription(newDesc);
         Set<ConstraintViolation<EventBean>> violations
                 = validator.validate(event);
         assertEquals(1, violations.size());

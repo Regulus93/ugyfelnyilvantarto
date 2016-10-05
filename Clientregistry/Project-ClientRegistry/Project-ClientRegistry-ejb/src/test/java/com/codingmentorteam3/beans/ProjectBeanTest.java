@@ -16,7 +16,7 @@ import org.junit.Test;
 
 /**
  *
- * @author Regulus
+ * @author Bicsak Dani
  */
 public class ProjectBeanTest {
 

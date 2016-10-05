@@ -62,7 +62,6 @@ public class ContactPersonController extends PageableEntityController<ContactPer
         contactPersonService.createContactPerson(getEntity());
     }
 
-    //at kell nezni hogy helyesen legyen beirva
     @Override
     public String getNoEntityMessage() {
         return "No contact person found in database!";

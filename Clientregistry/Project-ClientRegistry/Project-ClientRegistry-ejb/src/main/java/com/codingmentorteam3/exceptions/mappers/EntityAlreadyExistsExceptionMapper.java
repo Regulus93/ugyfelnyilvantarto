@@ -28,5 +28,5 @@ public class EntityAlreadyExistsExceptionMapper implements ExceptionMapper<Entit
                 .type(MediaType.APPLICATION_JSON)
                 .build();
     }
-    
+
 }

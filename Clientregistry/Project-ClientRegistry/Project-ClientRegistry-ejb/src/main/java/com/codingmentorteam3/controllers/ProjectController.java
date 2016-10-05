@@ -34,15 +34,6 @@ public class ProjectController extends PageableEntityController<Project> {
     @Inject
     private CompanyService companyService;
 
-    //user method
-//    public String getProjectById(Long projectId) {
-//        Project project = projectService.getProject(projectId);
-//        if (null != project) {
-//            return "";
-//        }
-//        throw new BadRequestException(getNoEntityMessage());
-//    }
-    //user method
     public ProjectDTO updateProject(ProjectBean updateProject, Long projectId) {
         Project oldProject = loadEntity(projectId);
         if (null != oldProject) {
@@ -74,7 +65,6 @@ public class ProjectController extends PageableEntityController<Project> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method
     public List<ProjectDTO> getProjectsList() {
         List<ProjectDTO> projectDTOs = new ArrayList<>();
         for (Project p : getEntities()) {
@@ -84,7 +74,6 @@ public class ProjectController extends PageableEntityController<Project> {
         return projectDTOs;
     }
 
-    //user method id
     public List<CompanyDTO> getCompaniesListByProjectId(Long projectId) {
         Project currentProject = loadEntity(projectId);
         if (null != currentProject) {
@@ -165,7 +154,6 @@ public class ProjectController extends PageableEntityController<Project> {
         return null;
     }
 
-    //atnezni a stringek helyesek-e az alabbi 3 override-nal
     @Override
     public String getListPage() {
         return "project-list";

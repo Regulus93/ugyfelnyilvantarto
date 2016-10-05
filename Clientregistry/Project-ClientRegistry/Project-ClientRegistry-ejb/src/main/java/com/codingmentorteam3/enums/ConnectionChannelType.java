@@ -7,5 +7,5 @@ package com.codingmentorteam3.enums;
 public enum ConnectionChannelType {
 
     EMAIL, PHONE, FACEBOOK, TWITTER, LINKEDIN, YOUTUBE
-    
+
 }

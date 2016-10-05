@@ -13,11 +13,11 @@ import javax.ws.rs.ext.ExceptionMapper;
  *
  * @author Zsolt
  */
-public class InvalidPasswordExceptionMapper implements ExceptionMapper<InvalidPasswordException>{
+public class InvalidPasswordExceptionMapper implements ExceptionMapper<InvalidPasswordException> {
 
     @Inject
     private Logger logger;
-    
+
     @Override
     public Response toResponse(InvalidPasswordException exception) {
         logger.log(Level.SEVERE,

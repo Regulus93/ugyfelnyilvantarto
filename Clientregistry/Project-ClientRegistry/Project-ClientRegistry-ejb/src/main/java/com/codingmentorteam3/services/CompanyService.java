@@ -71,5 +71,5 @@ public class CompanyService {
     public List<Company> getCompaniesListByTaxFilter(String taxNumber, Integer limit, Integer offset) {
         return companyDao.getCompaniesListByTaxFilter(taxNumber, limit, offset);
     }
-    
+
 }

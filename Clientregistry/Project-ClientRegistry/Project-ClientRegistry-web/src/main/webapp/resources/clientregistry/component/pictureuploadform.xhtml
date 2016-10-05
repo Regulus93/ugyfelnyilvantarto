@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <composite:interface>
+    </composite:interface>
+
+    <composite:implementation>
+        <h:form class="form-horizontal" id="form" enctype="multipart/form-data">
+            <div class="col-sm-5">
+                <h:messages/>
+                <h:panelGrid columns="1">
+                    <h:outputText value="File:"/>
+                    <h:inputFile id="file" value="#{managePicture.uploadedFile}"
+                                 validator="#{managePicture.validateFile}"/>
+                </h:panelGrid>
+                <h:commandButton value="Upload File" action="#{managePicture.uploadFile}">
+                    <f:ajax execute="file" render="@all"/>
+                </h:commandButton>
+            </div>
+        </h:form>
+    </composite:implementation>
+
+</html>
+

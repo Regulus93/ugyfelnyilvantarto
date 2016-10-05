@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:clientregistry="http://xmlns.jcp.org/jsf/composite/clientregistry"
       xmlns:clientregistry-component="http://xmlns.jcp.org/jsf/composite/clientregistry/component">
-    
+
     <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -53,38 +53,38 @@
                     <div class="row">
                         <h4>Edit personal info</h4>
                         <div class="col-sm-5">
-                            <h:form class="form-horizontal">
-                                <div class="form-group">
-                                    <h:outputLabel value="First name"/>
-                                    <h:inputText id="firstName" value="#{user.firstName}" class="form-control" required="true" label="John" requiredMessage="First name required">
-                                        <f:validateLength minimum="2" maximum="30"/>
-                                    </h:inputText>
-                                    <h:message id="firstNameMessage" for="firstName" style="color:red"/>
-                                </div>
-                                <div class="form-group">
-                                    <h:outputLabel value="Last name"/>
-                                    <h:inputText id="lastName" value="#{user.lastName}" class="form-control" required="true" label="Smith" requiredMessage="Last name required">
-                                        <f:validateLength minimum="2" maximum="30"/>
-                                    </h:inputText>
-                                    <h:message id="lastNameMessage" for="lastName" style="color:red"/>
-                                </div>
-                                <div class="form-group">
-                                    <h:outputLabel value="Username"/>
-                                    <h:inputText id="username" value="#{user.username}" class="form-control" required="true" label="Username" requiredMessage="Username required">
-                                        <f:validator validatorId="UsernameValidator"/>
-                                    </h:inputText>
-                                    <h:message id="usernameMessage" for="username" style="color:red"/>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="col-sm-4">
-                                            <a href="myprofile.html" class="btn btn-primary center-block btn-color-register">Cancel</a>
-                                        </div>
-                                        <div class="col-sm-4 col-sm-offset-4">
-                                            <h:commandButton class="btn btn-primary center-block btn-color-sign-in" value="Save" action="#{userController.updateUserPersonalInfos(user, param['id'])}"/>
-                                        </div>
+                            <clientregistry-component:pictureuploadform profile="active"/>
+                            <div class="form-group">
+                                <h:outputLabel value="First name"/>
+                                <h:inputText id="firstName" value="#{user.firstName}" class="form-control" required="true" label="John" requiredMessage="First name required">
+                                    <f:validateLength minimum="2" maximum="30"/>
+                                </h:inputText>
+                                <h:message id="firstNameMessage" for="firstName" style="color:red"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="Last name"/>
+                                <h:inputText id="lastName" value="#{user.lastName}" class="form-control" required="true" label="Smith" requiredMessage="Last name required">
+                                    <f:validateLength minimum="2" maximum="30"/>
+                                </h:inputText>
+                                <h:message id="lastNameMessage" for="lastName" style="color:red"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="Username"/>
+                                <h:inputText id="username" value="#{user.username}" class="form-control" required="true" label="Username" requiredMessage="Username required">
+                                    <f:validator validatorId="UsernameValidator"/>
+                                </h:inputText>
+                                <h:message id="usernameMessage" for="username" style="color:red"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-4">
+                                        <a href="myprofile.html" class="btn btn-primary center-block btn-color-register">Cancel</a>
+                                    </div>
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <h:commandButton class="btn btn-primary center-block btn-color-sign-in" value="Save" action="#{userController.updateUserPersonalInfos(user, param['id'])}"/>
                                     </div>
                                 </div>
+                            </div>
                             </h:form>
                             <hr/>
                         </div>
@@ -153,11 +153,11 @@
                             <h:dataTable value="#{personController.getConnectionChannels(entityId)}" var="cd">
                                 <h:column>    				
                                     <f:facet name="header">Type</f:facet>    				
-                                    #{connectionChannel.type}
+                                        #{connectionChannel.type}
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">Connection</f:facet>
-                                    #{connectionChannel.value}
+                                        #{connectionChannel.value}
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">Edit</f:facet>

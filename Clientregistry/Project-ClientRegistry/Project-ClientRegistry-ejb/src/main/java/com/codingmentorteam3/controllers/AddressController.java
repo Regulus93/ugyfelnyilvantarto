@@ -18,13 +18,4 @@ public class AddressController {
     @Inject
     private AddressDaoImpl addressDao;
 
-//    meg nem hasznaljuk
-//    public AddressDTO getAddressById(Long id) {
-//        Address address = addressDao.read(id);
-//        if (null != address) {
-//            return new AddressDTO(address);
-//        }
-//        throw new BadRequestException("No address found in database!");
-//    }
-
 }

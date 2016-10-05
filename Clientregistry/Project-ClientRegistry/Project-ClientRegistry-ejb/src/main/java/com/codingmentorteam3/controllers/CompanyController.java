@@ -55,14 +55,13 @@ public class CompanyController extends PageableEntityController<Company> {
 
     @Inject
     private ContactPersonService contactPersonService;
-    
+
     private final List<CompanyDTO> companyDTOs = new ArrayList<>();
 
     public List<CompanyDTO> getCompanyDTOs() {
         return companyDTOs;
     }
 
-    //user method/admin accepted MUKODIK
     public String createCompany(CompanyBean regCompany, AddressBean regAddress) {
         Company newCompany = new Company(regCompany);
         Address newAddress = new Address(regAddress);
@@ -81,15 +80,6 @@ public class CompanyController extends PageableEntityController<Company> {
         return saveEntity();
     }
 
-//    //user method EGYENLORE MARAD HATHA SZUKSEG LESZ RA DTOS
-//    public String getCompanyById(Long companyId) {
-//        Company company = companyService.getCompany(companyId);
-//        if (null != company) {
-//            return getListPage();
-//        }
-//        throw new BadRequestException(getNoEntityMessage());
-//    }
-    //user method FASZA
     public CompanyDTO updateCompanyPersonalInfos(CompanyBean updateCompany, Long companyId) {
         Company oldCompany = loadEntity(companyId);
         if (null != oldCompany) {
@@ -102,7 +92,6 @@ public class CompanyController extends PageableEntityController<Company> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method EGYENLORE FASZA
     public AddressDTO updateCompanyAddress(AddressBean updateAddress, Long companyId) {
         Company currentCompany = loadEntity(companyId);
         if (null != currentCompany) {
@@ -135,7 +124,6 @@ public class CompanyController extends PageableEntityController<Company> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method
     public CompanyDTO changeLogo(String newLogo, Long companyId) {
         Company currentCompany = loadEntity(companyId);
         if (null != currentCompany) {
@@ -147,7 +135,6 @@ public class CompanyController extends PageableEntityController<Company> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //admin method
     public List<CompanyDTO> deleteCompanyById(Long companyId) {
         companyDTOs.clear();
         Company deleteCompany = loadEntity(companyId);
@@ -168,7 +155,6 @@ public class CompanyController extends PageableEntityController<Company> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method
     public List<CompanyDTO> getCompaniesList() {
         companyDTOs.clear();
         for (Company c : getEntities()) {
@@ -231,7 +217,6 @@ public class CompanyController extends PageableEntityController<Company> {
         return contactPersonDTOs;
     }
 
-    //user method
     public List<ProjectDTO> createProject(ProjectBean regProject, Long companyId) {
         Project newProject = new Project(regProject);
         Company currentCompany = loadEntity(companyId);
@@ -266,7 +251,6 @@ public class CompanyController extends PageableEntityController<Company> {
         return projectDTOs;
     }
 
-    //user method
     public List<ProjectDTO> getProjectsListByCompanyId(Long companyId) {
         Company currentCompany = loadEntity(companyId);
         if (null != currentCompany) {
@@ -280,7 +264,6 @@ public class CompanyController extends PageableEntityController<Company> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method FASZA EDDIG
     public List<EventDTO> getEventsListByCompanyId(Long companyId) {
         Company currentCompany = loadEntity(companyId);
         if (null != currentCompany) {
@@ -294,7 +277,6 @@ public class CompanyController extends PageableEntityController<Company> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method
     public List<ContactPersonDTO> getContactersListByCompanyId(Long companyId) {
         Company currentCompany = loadEntity(companyId);
         if (null != currentCompany) {
@@ -375,7 +357,6 @@ public class CompanyController extends PageableEntityController<Company> {
         companyService.createCompany(getEntity());
     }
 
-    //at kell nezni hogy helyesen legyen beirva
     @Override
     public String getNoEntityMessage() {
         return "No company found in database!";

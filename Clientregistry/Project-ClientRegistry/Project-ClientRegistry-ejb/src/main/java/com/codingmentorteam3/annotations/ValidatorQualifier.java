@@ -9,10 +9,10 @@ import javax.inject.Qualifier;
 
 /**
  *
- * @author Regulus
+ * @author Bicsak Dani
  */
 @Qualifier
 @Target({METHOD, FIELD})
 @Retention(RUNTIME)
-public @interface ValidatorQualifier {   
+public @interface ValidatorQualifier {
 }

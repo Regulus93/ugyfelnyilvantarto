@@ -66,7 +66,7 @@
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
         </dependency>
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator-annotation-processor</artifactId>
             <version>4.1.0.Final</version>

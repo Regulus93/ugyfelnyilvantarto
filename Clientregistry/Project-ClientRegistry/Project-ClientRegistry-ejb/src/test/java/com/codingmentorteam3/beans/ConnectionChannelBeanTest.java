@@ -17,7 +17,7 @@ import org.mockito.Mockito;
 
 /**
  *
- * @author Regulus
+ * @author Bicsak Dani
  */
 public class ConnectionChannelBeanTest {
 
@@ -71,26 +71,8 @@ public class ConnectionChannelBeanTest {
         connectionChannel.setType(null);
         Set<ConstraintViolation<ConnectionChannelBean>> violations
                 = validator.validate(connectionChannel);
-        assertEquals(2, violations.size());
-
-        boolean notNullViolated = false;
-        boolean valueViolated = false;
-
-        for (ConstraintViolation<ConnectionChannelBean> violation : violations) {
-            if(violation.getMessageTemplate().equals("{javax.validation.constraints.NotNull.message}"))
-            {
-                notNullViolated = true;
-            }
-            
-            if(violation.getMessageTemplate().equals("{InvalidConnectionChannelValue.message}"))
-            {
-                valueViolated = true;
-            }
-        }
-        
-        if (notNullViolated == true) {
-            assertEquals(valueViolated, notNullViolated);
-        }
+        assertEquals(1, violations.size());
+        assertEquals("{InvalidConnectionChannelValue.message}", violations.iterator().next().getMessageTemplate());
     }
 
     @Test
@@ -98,49 +80,29 @@ public class ConnectionChannelBeanTest {
         connectionChannel.setValue(null);
         Set<ConstraintViolation<ConnectionChannelBean>> violations
                 = validator.validate(connectionChannel);
-        assertEquals(2, violations.size());
-        
-        boolean notNullViolated = false;
-        boolean valueViolated = false;
+        assertEquals(1, violations.size());
+        assertEquals("{InvalidConnectionChannelValue.message}", violations.iterator().next().getMessageTemplate());
+        }
 
-        for (ConstraintViolation<ConnectionChannelBean> violation : violations) {
-            if(violation.getMessageTemplate().equals("{javax.validation.constraints.NotNull.message}"))
-            {
-                notNullViolated = true;
-            }
-            
-            if(violation.getMessageTemplate().equals("{InvalidConnectionChannelValue.message}"))
-            {
-                valueViolated = true;
-            }
-        }
-        
-        if (notNullViolated == true) {
-            assertEquals(valueViolated, notNullViolated);
-        }
-    }
-    
     @Test
-    public void shouldViolateEmailPatternValidation(){
+    public void shouldViolateEmailPatternValidation() {
         connectionChannel.setValue("example?@gmail.com");
         Set<ConstraintViolation<ConnectionChannelBean>> violations
                 = validator.validate(connectionChannel);
         assertEquals(1, violations.size());
-        assertEquals("{InvalidConnectionChannelValue.message}"
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{InvalidConnectionChannelValue.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
-    
+
     @Test
-    public void shouldViolatePhonePatternValidation(){
+    public void shouldViolatePhonePatternValidation() {
         connectionChannel.setType(ConnectionChannelType.PHONE);
         connectionChannel.setValue("3630123788");
         Set<ConstraintViolation<ConnectionChannelBean>> violations
                 = validator.validate(connectionChannel);
         assertEquals(1, violations.size());
-        assertEquals("{InvalidConnectionChannelValue.message}"
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{InvalidConnectionChannelValue.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
 }

@@ -1,7 +1,7 @@
 package com.codingmentorteam3.controllers;
 
 import com.codingmentorteam3.dtos.ConnectionChannelDTO;
-import com.codingmentorteam3.dtos.ProjectDTO;
+import com.codingmentorteam3.dtos.PersonDTO;
 import com.codingmentorteam3.entities.ConnectionChannel;
 import com.codingmentorteam3.entities.Person;
 import com.codingmentorteam3.exceptions.query.BadRequestException;
@@ -25,7 +25,13 @@ public class PersonController {
     @Inject
     private PersonService personService;
 
-    //egyenlore marad pageable?
+    protected Person loadEntity(Long entityId) {
+        if (entityId != null) {
+            return personService.getPerson(entityId);
+        }
+        return null;
+    }
+
     public List<ConnectionChannelDTO> getConnectionChannels(Long personId) {
         Person currentPerson = personService.getPerson(personId);
         if (null != currentPerson) {
@@ -37,6 +43,20 @@ public class PersonController {
             return connectionChannelDTOs;
         }
         throw new BadRequestException("No person found in database!");
+    }
+
+    public PersonDTO changeAvatar(String avatarPath, Long personId) {
+        Person currentPerson = loadEntity(personId);
+        if (null != currentPerson) {
+            currentPerson.setAvatar(avatarPath);
+            personService.editPerson(currentPerson);
+            return new PersonDTO(currentPerson);
+        }
+        throw new BadRequestException("No person found in database!");
+    }
+
+    public String getAvatar(Long personId) {
+        return personService.getPerson(personId).getAvatar();
     }
 
 }

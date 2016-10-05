@@ -17,84 +17,80 @@ import org.mockito.Mockito;
 
 /**
  *
- * @author Regulus
+ * @author Bicsak Dani
  */
 public class NoteBeanTest {
-    
+
     private static ValidatorFactory vf;
     private static Validator validator;
     private NoteBean note;
-    
+
     public NoteBeanTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
         vf = Validation.buildDefaultValidatorFactory();
         validator = vf.getValidator();
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        note = new NoteBean("Label","Comment",Mockito.mock(User.class),Mockito.mock(Event.class));
+        note = new NoteBean("Label", "Comment", Mockito.mock(User.class), Mockito.mock(Event.class));
     }
-    
+
     @After
     public void tearDown() {
     }
-    
+
     @Test
-    public void shouldNotViolateNoteValidation(){
-         Set<ConstraintViolation<NoteBean>> violations =
-                validator.validate(note);
+    public void shouldNotViolateNoteValidation() {
+        Set<ConstraintViolation<NoteBean>> violations
+                = validator.validate(note);
         assertEquals(0, violations.size());
     }
-    
+
     @Test
-    public void shouldViolateUserIsNotNullValidation(){
+    public void shouldViolateUserIsNotNullValidation() {
         note.setUser(null);
-        Set<ConstraintViolation<NoteBean>> violations =
-                validator.validate(note);
+        Set<ConstraintViolation<NoteBean>> violations
+                = validator.validate(note);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.NotNull.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.NotNull.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
-    
+
     @Test
-    public void shouldViolateEventIsNotNullValidation(){
+    public void shouldViolateEventIsNotNullValidation() {
         note.setEvent(null);
-        Set<ConstraintViolation<NoteBean>> violations =
-                validator.validate(note);
+        Set<ConstraintViolation<NoteBean>> violations
+                = validator.validate(note);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.NotNull.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.NotNull.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
-    
+
     @Test
-    public void shouldViolateContentIsNotNullValidation(){
+    public void shouldViolateContentIsNotNullValidation() {
         note.setContent(null);
-        Set<ConstraintViolation<NoteBean>> violations =
-                validator.validate(note);
+        Set<ConstraintViolation<NoteBean>> violations
+                = validator.validate(note);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.NotNull.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.NotNull.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
-    
+
     @Test
-    public void shouldViolateLabelMaxLengthValidation(){
+    public void shouldViolateLabelMaxLengthValidation() {
         note.setLabel("MaximumLengthOfTheLabelViolated");
-        Set<ConstraintViolation<NoteBean>> violations =
-                validator.validate(note);
+        Set<ConstraintViolation<NoteBean>> violations
+                = validator.validate(note);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.Size.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.Size.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 }

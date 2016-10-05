@@ -46,8 +46,6 @@ public class AuthController {
     public String login() {
         LOG.info("AuthController.login()");
         HttpServletRequest request = UtilSession.getRequest();
-        System.out.println(request.toString() + "asd");
-        System.out.println(username + "asdasd" + password);
         try {
             request.login(username, password);
         } catch (ServletException e) {

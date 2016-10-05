@@ -32,17 +32,17 @@ public class InvitationService {
     public Invitation deleteInvitation(Invitation invitation) {
         return invitationDao.delete(invitation);
     }
-    
+
     public List<Invitation> getInvitationsList(Integer limit, Integer offset) {
         return invitationDao.getInvitationsList(limit, offset);
     }
-    
+
     public List<Invitation> getInvitationsListByReceiverIdAndFeedbackStatus(Long receiverId, FeedbackType ftype, Integer limit, Integer offset) {
-        return invitationDao.getInvitationsListByReceiverIdAndFeedbackStatus(receiverId, ftype, limit, offset);       
+        return invitationDao.getInvitationsListByReceiverIdAndFeedbackStatus(receiverId, ftype, limit, offset);
     }
-    
+
     public List<Invitation> getInvitationsListBySenderId(Long senderId, Integer limit, Integer offset) {
         return invitationDao.getInvitationsListBySenderId(senderId, limit, offset);
     }
-    
+
 }

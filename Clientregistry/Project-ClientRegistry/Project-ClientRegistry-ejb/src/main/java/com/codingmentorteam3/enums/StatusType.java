@@ -6,6 +6,6 @@ package com.codingmentorteam3.enums;
  */
 public enum StatusType {
 
-    BEGINNING, UNDER_CONSTRUCTION, TESTED, FINISHED, INACTIVE 
-    
+    BEGINNING, UNDER_CONSTRUCTION, TESTED, FINISHED, INACTIVE
+
 }

@@ -13,11 +13,11 @@ import javax.ws.rs.ext.ExceptionMapper;
  *
  * @author Zsolt
  */
-public class NoMatchForFilterExceptionMapper implements ExceptionMapper<NoMatchForFilterException>{
+public class NoMatchForFilterExceptionMapper implements ExceptionMapper<NoMatchForFilterException> {
 
     @Inject
     private Logger logger;
-    
+
     @Override
     public Response toResponse(NoMatchForFilterException exception) {
         logger.log(Level.SEVERE,

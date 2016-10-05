@@ -20,11 +20,11 @@ import javax.validation.ReportAsSingleViolation;
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
 public @interface ValidDeadline {
-    
+
     String message() default "{InvalidDeadline.message}";
-    
+
     Class<?>[] groups() default {};
-    
+
     Class<? extends Payload>[] payload() default {};
-    
+
 }

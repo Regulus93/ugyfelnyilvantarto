@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidatorContext;
  *
  * @author istvan.mosonyi
  */
-public class ValidStartAndEndDateValidator 
+public class ValidStartAndEndDateValidator
         implements ConstraintValidator<ValidStartAndEndDate, EventBean> {
 
     @Override
@@ -18,10 +18,10 @@ public class ValidStartAndEndDateValidator
 
     @Override
     public boolean isValid(EventBean eventBean, ConstraintValidatorContext context) {
-       if(eventBean.getEndDate() != null) {
-           return eventBean.getStartDate().before(eventBean.getEndDate());
-       }
-       return true;
+        if (eventBean.getEndDate() != null) {
+            return eventBean.getStartDate().before(eventBean.getEndDate());
+        }
+        return true;
     }
-    
+
 }

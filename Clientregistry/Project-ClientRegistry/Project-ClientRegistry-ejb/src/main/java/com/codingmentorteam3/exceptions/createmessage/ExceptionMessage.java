@@ -19,5 +19,5 @@ public class ExceptionMessage {
     public void setText(String text) {
         this.text = text;
     }
-    
+
 }

@@ -14,7 +14,7 @@ import org.junit.Test;
 
 /**
  *
- * @author Regulus
+ * @author Bicsak Dani
  */
 public class AddressBeanTest {
 
@@ -37,11 +37,7 @@ public class AddressBeanTest {
 
     @Before
     public void setUp() {
-        address = new AddressBean("Hungary"
-                             ,"Test town"
-                             ,"Main street"
-                             ,"230"
-                             ,"8900");
+        address = new AddressBean("Hungary", "Test town", "Main street", "230", "8900");
     }
 
     @After
@@ -59,9 +55,8 @@ public class AddressBeanTest {
         address.setCountry(null);
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.NotNull.message}"
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.NotNull.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
@@ -69,9 +64,8 @@ public class AddressBeanTest {
         address.setCountry("HU");
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.Size.message}"
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.Size.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
@@ -79,9 +73,8 @@ public class AddressBeanTest {
         address.setCity(null);
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.NotNull.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.NotNull.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
@@ -89,9 +82,8 @@ public class AddressBeanTest {
         address.setCountry("H");
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.Size.message}"
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.Size.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
@@ -99,9 +91,8 @@ public class AddressBeanTest {
         address.setStreet(null);
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.NotNull.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.NotNull.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
@@ -109,9 +100,8 @@ public class AddressBeanTest {
         address.setCountry("A street name above 30 character");
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.Size.message}"
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.Size.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
@@ -119,9 +109,8 @@ public class AddressBeanTest {
         address.setHouseNumber(null);
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.NotNull.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.NotNull.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
@@ -129,9 +118,8 @@ public class AddressBeanTest {
         address.setHouseNumber("4!");
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.Pattern.message}"
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.Pattern.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
@@ -139,9 +127,8 @@ public class AddressBeanTest {
         address.setZipCode(null);
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.NotNull.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.NotNull.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
@@ -149,8 +136,7 @@ public class AddressBeanTest {
         address.setZipCode("4");
         Set<ConstraintViolation<AddressBean>> violations = validator.validate(address);
         assertEquals(1, violations.size());
-        assertEquals("{javax.validation.constraints.Pattern.message}"
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{javax.validation.constraints.Pattern.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 }

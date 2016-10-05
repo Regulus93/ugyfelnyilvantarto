@@ -57,5 +57,10 @@ public class UserService {
     public List<User> getUsersListByPositionFilter(String position, Integer limit, Integer offset) {
         return userDao.getUsersListByPositionFilter(position, limit, offset);
     }
-    
+
+    public long getUserIdByUsername(String username) {
+        User u = userDao.getUserByUsername(username);
+        return u.getId();
+    }
+
 }

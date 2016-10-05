@@ -18,10 +18,11 @@ import javax.validation.Validator;
 @Interceptor
 @BeanValidation
 public class ValidationInterceptor {
-    
-    @Inject @ValidatorQualifier
+
+    @Inject
+    @ValidatorQualifier
     private Validator validator;
-    
+
     @AroundInvoke
     public Object validateBeans(InvocationContext ic) throws Exception {
         validateParameters(ic.getParameters());
@@ -29,8 +30,8 @@ public class ValidationInterceptor {
     }
 
     private void validateParameters(Object[] parameters) {
-        for(Object p : parameters) {
-            if(p.getClass().isAnnotationPresent(Validate.class)) {
+        for (Object p : parameters) {
+            if (p.getClass().isAnnotationPresent(Validate.class)) {
                 validateBean(p);
             }
         }
@@ -38,22 +39,22 @@ public class ValidationInterceptor {
 
     private void validateBean(Object o) {
         Set<ConstraintViolation<Object>> violations = validator.validate(o);
-        if(!violations.isEmpty()) {
+        if (!violations.isEmpty()) {
             String errorMessage = getErrorMessage(violations);
             throw new ValidationException(errorMessage);
         }
     }
-    
+
     private String getErrorMessage(Set<ConstraintViolation<Object>> violations) {
         StringBuilder errorMessage = new StringBuilder();
-        for(ConstraintViolation<Object> error : violations) {
+        for (ConstraintViolation<Object> error : violations) {
             errorMessage.append("Validation error: ")
-                        .append(error.getMessage())
-                        .append(" - property: ")
-                        .append(error.getPropertyPath().toString())
-                        .append(".");
+                    .append(error.getMessage())
+                    .append(" - property: ")
+                    .append(error.getPropertyPath().toString())
+                    .append(".");
         }
         return errorMessage.toString();
     }
-    
+
 }

@@ -17,7 +17,7 @@ public class NotSamePasswordExceptionMapper implements ExceptionMapper<NotSamePa
 
     @Inject
     private Logger logger;
-    
+
     @Override
     public Response toResponse(NotSamePasswordException exception) {
         logger.log(Level.SEVERE,

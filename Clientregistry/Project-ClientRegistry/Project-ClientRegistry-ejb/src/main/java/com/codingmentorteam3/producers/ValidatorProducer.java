@@ -12,10 +12,11 @@ import javax.validation.ValidatorFactory;
  */
 public class ValidatorProducer {
 
-    @Produces @ValidatorQualifier
+    @Produces
+    @ValidatorQualifier
     public Validator produceValidator() {
         ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
         return vf.getValidator();
     }
-    
+
 }

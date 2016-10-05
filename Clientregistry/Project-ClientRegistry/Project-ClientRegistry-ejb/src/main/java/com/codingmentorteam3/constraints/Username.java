@@ -25,11 +25,11 @@ import javax.validation.constraints.Pattern;
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER})
 @Retention(RUNTIME)
 public @interface Username {
-    
+
     String message() default "{InvalidUsername.message}";
-    
+
     Class<?>[] groups() default {};
-    
+
     Class<? extends Payload>[] payload() default {};
-    
+
 }

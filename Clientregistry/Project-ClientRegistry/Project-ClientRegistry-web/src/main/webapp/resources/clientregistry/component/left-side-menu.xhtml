@@ -19,7 +19,7 @@
     <composite:implementation>
         <div class="col-sm-2 col-sm-offset-1">
             <h:panelGrid id="content" columns="1">
-                <h:graphicImage value="http://localhost:8080/images/dummy.jpg" width="150px"/>
+                <h:graphicImage value="#{managePicture.getUserPicturePath()}" height="150px" width="150px"/>
             </h:panelGrid>
             <br/>
             <h:outputText value="#{sessionScope['user'].username}"/>

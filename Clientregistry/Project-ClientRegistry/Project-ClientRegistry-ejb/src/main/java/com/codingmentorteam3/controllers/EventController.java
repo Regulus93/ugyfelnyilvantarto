@@ -57,14 +57,6 @@ public class EventController extends PageableEntityController<Event> {
     @Inject
     private InvitationService invitationService;
 
-//    public String getEventById(Long eventId) {
-//        Event event = eventService.getEvent(eventId);
-//        if (null != event) {
-//            return "";
-//        }
-//        throw new BadRequestException(getNoEntityMessage());
-//    }
-    //user method
     public EventDTO updateEvent(EventBean updateEvent, Long eventId) {
         Event oldEvent = loadEntity(eventId);
         if (null != oldEvent) {
@@ -77,7 +69,6 @@ public class EventController extends PageableEntityController<Event> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method
     public AddressDTO updateEventAddress(AddressBean updateAddress, Long eventId) {
         Event currentEvent = loadEntity(eventId);
         if (null != currentEvent) {
@@ -148,7 +139,6 @@ public class EventController extends PageableEntityController<Event> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //eventbe megy sender kerdeses hogy adjuk at
     public String createInvitations(InvitationBean createInvitation, Long eventId, Long senderId, List<Long> receiverList) {
         Event event = loadEntity(eventId);
         User sender = userService.getUser(senderId);
@@ -195,7 +185,7 @@ public class EventController extends PageableEntityController<Event> {
         }
         throw new BadRequestException(getNoEntityMessage());
     }
-    
+
     public List<EventDTO> getEventsListByStringFilter(String name) {
         List<EventDTO> eventDTOs = new ArrayList<>();
         for (Event e : eventService.getEventsListByStringFilter(name, getLimit(), getOffset())) {
@@ -238,7 +228,6 @@ public class EventController extends PageableEntityController<Event> {
         eventService.createEvent(getEntity());
     }
 
-    //at kell nezni hogy helyesen legyen beirva
     @Override
     public String getNoEntityMessage() {
         return "No event found in database!";

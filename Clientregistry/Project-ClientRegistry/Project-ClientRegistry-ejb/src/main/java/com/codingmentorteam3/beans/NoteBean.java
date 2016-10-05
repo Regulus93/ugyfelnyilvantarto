@@ -17,17 +17,17 @@ import javax.validation.constraints.Size;
 @SessionScoped
 @ManagedBean(name = "noteBean")
 public class NoteBean {
-    
+
     @Size(max = 30)
     private String label;
-    
+
     @NotNull
     @Size(max = 500)
     private String content;
-    
+
     @NotNull
     private User user;
-    
+
     @NotNull
     private Event event;
 
@@ -115,5 +115,5 @@ public class NoteBean {
     public String toString() {
         return "NoteBean{" + "label=" + label + ", content=" + content + ", user=" + user + ", event=" + event + '}';
     }
-    
+
 }

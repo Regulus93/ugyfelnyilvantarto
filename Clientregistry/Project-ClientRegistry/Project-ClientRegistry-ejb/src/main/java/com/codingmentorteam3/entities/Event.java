@@ -1,4 +1,5 @@
 package com.codingmentorteam3.entities;
+
 import com.codingmentorteam3.beans.EventBean;
 import com.codingmentorteam3.enums.EventType;
 import java.io.Serializable;
@@ -21,6 +22,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 /**
  *
  * @author norbeee sch.norbeee@gmail.com
@@ -34,6 +36,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "event.list.notes.by.id", query = "SELECT n FROM event_table e INNER JOIN e.notes n WHERE e.id =:id")
 })
 public class Event implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id")
@@ -62,9 +65,11 @@ public class Event implements Serializable {
     private List<Invitation> invitations = new ArrayList<>();
     @OneToMany(mappedBy = "event", targetEntity = Note.class)
     private List<Note> notes = new ArrayList<>();
+
     public Event() {
         //Default constructor
     }
+
     public Event(EventBean eventBean) {
         this.title = eventBean.getTitle();
         this.description = eventBean.getDescription();
@@ -74,72 +79,95 @@ public class Event implements Serializable {
         this.endDate = eventBean.getEndDate();
         this.company = eventBean.getCompany();
     }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public Address getAddress() {
         return address;
     }
+
     public void setAddress(Address address) {
         this.address = address;
     }
+
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public Date getStartDate() {
         return startDate;
     }
+
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
+
     public Date getEndDate() {
         return endDate;
     }
+
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
     public EventType getType() {
         return type;
     }
+
     public void setType(EventType type) {
         this.type = type;
     }
+
     public Company getCompany() {
         return company;
     }
+
     public void setCompany(Company company) {
         this.company = company;
     }
+
     public List<User> getUsers() {
         return users;
     }
+
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
     public List<Invitation> getInvitations() {
         return invitations;
     }
+
     public void setInvitations(List<Invitation> invitations) {
         this.invitations = invitations;
     }
+
     public List<Note> getNotes() {
         return notes;
     }
+
     public void setNotes(List<Note> notes) {
         this.notes = notes;
     }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -151,6 +179,7 @@ public class Event implements Serializable {
         hash = 79 * hash + Objects.hashCode(this.type);
         return hash;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

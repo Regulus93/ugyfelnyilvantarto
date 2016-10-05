@@ -17,23 +17,23 @@ import javax.validation.constraints.Size;
 @ManagedBean(name = "addressBean")
 public class AddressBean {
 
-    @NotNull 
+    @NotNull
     @Size(min = 3, max = 30)
     private String country;
-    
-    @NotNull 
+
+    @NotNull
     @Size(min = 2, max = 30)
     private String city;
-    
-    @NotNull 
+
+    @NotNull
     @Size(max = 30)
     private String street;
-    
-    @NotNull 
+
+    @NotNull
     @Pattern(regexp = "\\w{1,20}")
     private String houseNumber;
-    
-    @NotNull 
+
+    @NotNull
     @Pattern(regexp = "\\d{4,8}")
     private String zipCode;
 
@@ -134,5 +134,5 @@ public class AddressBean {
     public String toString() {
         return "AddressBean{" + "country=" + country + ", city=" + city + ", street=" + street + ", houseNumber=" + houseNumber + ", zipCode=" + zipCode + '}';
     }
-    
+
 }

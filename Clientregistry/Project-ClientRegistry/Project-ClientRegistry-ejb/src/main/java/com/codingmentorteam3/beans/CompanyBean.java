@@ -32,7 +32,7 @@ public class CompanyBean {
 
     @NotNull
     private String logo = DEFAULT_LOGO;
-    
+
     private String searchString;
 
     public CompanyBean() {
@@ -44,7 +44,7 @@ public class CompanyBean {
         this.address = address;
         this.taxNumber = taxNumber;
     }
-    
+
     public String getName() {
         return name;
     }

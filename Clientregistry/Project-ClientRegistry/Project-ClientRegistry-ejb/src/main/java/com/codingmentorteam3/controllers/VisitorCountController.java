@@ -19,13 +19,13 @@ public class VisitorCountController {
     private VisitorCountService visitorCountService;
 
     public void setCountVisitorsPerDay() {
-        
+
     }
-    
+
     public Integer getCountVisitorsPerDay() {
         LocalDate now = LocalDate.now();
         Date currentDay = java.sql.Date.valueOf(now);
         return visitorCountService.getCountVisitorsPerDay(currentDay);
     }
-    
+
 }

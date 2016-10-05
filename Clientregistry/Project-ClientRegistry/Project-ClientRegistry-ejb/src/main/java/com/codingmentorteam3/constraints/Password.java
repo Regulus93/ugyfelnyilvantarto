@@ -31,11 +31,11 @@ import javax.validation.constraints.Size;
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER})
 @Retention(RUNTIME)
 public @interface Password {
-    
+
     String message() default "{InvalidPassword.message}";
-    
+
     Class<?>[] groups() default {};
-    
+
     Class<? extends Payload>[] payload() default {};
-    
+
 }

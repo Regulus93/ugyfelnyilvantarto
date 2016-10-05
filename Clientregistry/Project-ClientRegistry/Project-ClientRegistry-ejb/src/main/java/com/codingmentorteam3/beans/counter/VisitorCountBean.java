@@ -8,18 +8,15 @@ import javax.faces.context.FacesContext;
  *
  * @author istvan.mosonyi
  */
-
 @SessionScoped
 @ManagedBean(name = "visitorCountBean")
 public class VisitorCountBean {
 
     public void logout() {
-        System.out.println("logout action invoked");
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
 
     public int getSessionCount() {
-        System.out.println("session count getter invoked");
         return SessionCounter.getCount();
     }
 

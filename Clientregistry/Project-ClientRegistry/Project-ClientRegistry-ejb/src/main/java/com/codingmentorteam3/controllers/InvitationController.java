@@ -77,7 +77,6 @@ public class InvitationController extends PageableEntityController<Invitation> {
         return null;
     }
 
-    //atnezni a stringek helyesek-e az alabbi 3 override-nal
     @Override
     public String getListPage() {
         return "invitation-list";

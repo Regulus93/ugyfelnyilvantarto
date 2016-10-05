@@ -86,7 +86,6 @@ public class CompanyDaoImpl extends AbstractDao<Company> {
         return query.getResultList();
     }
 
-    //returns the list of companies, who did not have events in "n" months
     public List<Company> getInactiveCompaniesList(Integer n, int limit, int offset) {
         TypedQuery<Company> query = em.createNamedQuery("company.list.n.month.no.event", Company.class);
         query.setParameter("n", n);

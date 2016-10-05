@@ -14,7 +14,7 @@ import org.junit.Test;
 
 /**
  *
- * @author Regulus
+ * @author Bicsak Dani
  */
 public class UserBeanTest {
 
@@ -50,48 +50,44 @@ public class UserBeanTest {
                 = validator.validate(user);
         assertEquals(0, violations.size());
     }
-    
+
     @Test
-    public void shouldViolateUsernameIsNotNullValidation(){
+    public void shouldViolateUsernameIsNotNullValidation() {
         user.setUsername(null);
-        Set<ConstraintViolation<UserBean>> violations =
-                validator.validate(user);
+        Set<ConstraintViolation<UserBean>> violations
+                = validator.validate(user);
         assertEquals(1, violations.size());
-        assertEquals("{InvalidUsername.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
-    }
-    
-    @Test
-    public void shouldViolatePasswordIsNotNullValidation(){
-        user.setPassword(null);
-        Set<ConstraintViolation<UserBean>> violations =
-                validator.validate(user);
-        assertEquals(1, violations.size());
-        assertEquals("{InvalidPassword.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
-    }
-    
-    @Test
-    public void shouldViolateUsernamePatternValidation(){
-        user.setUsername("usr");
-        Set<ConstraintViolation<UserBean>> violations =
-                validator.validate(user);
-        assertEquals(1, violations.size());
-        assertEquals("{InvalidUsername.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{InvalidUsername.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 
     @Test
-    public void shouldViolatePasswordPatternValidation(){
-        user.setPassword("pass");
-        Set<ConstraintViolation<UserBean>> violations =
-                validator.validate(user);
+    public void shouldViolatePasswordIsNotNullValidation() {
+        user.setPassword(null);
+        Set<ConstraintViolation<UserBean>> violations
+                = validator.validate(user);
         assertEquals(1, violations.size());
-        assertEquals("{InvalidPassword.message}" 
-                     ,violations.iterator().next().getMessageTemplate()
-                    );
+        assertEquals("{InvalidPassword.message}", violations.iterator().next().getMessageTemplate()
+        );
+    }
+
+    @Test
+    public void shouldViolateUsernamePatternValidation() {
+        user.setUsername("usr");
+        Set<ConstraintViolation<UserBean>> violations
+                = validator.validate(user);
+        assertEquals(1, violations.size());
+        assertEquals("{InvalidUsername.message}", violations.iterator().next().getMessageTemplate()
+        );
+    }
+
+    @Test
+    public void shouldViolatePasswordPatternValidation() {
+        user.setPassword("pass");
+        Set<ConstraintViolation<UserBean>> violations
+                = validator.validate(user);
+        assertEquals(1, violations.size());
+        assertEquals("{InvalidPassword.message}", violations.iterator().next().getMessageTemplate()
+        );
     }
 }

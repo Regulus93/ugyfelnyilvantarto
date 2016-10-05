@@ -10,15 +10,15 @@ import java.util.List;
 public abstract class PageableEntityController<T> implements JSFController {
 
     private final static Integer DEFAULT_LIMIT = 10;
-    
+
     private Integer limit = DEFAULT_LIMIT;
-    
+
     private Integer offset = 0;
-    
+
     private Long entityId;
-    
+
     private T entity;
-    
+
     public Integer getLimit() {
         return limit;
     }
@@ -50,37 +50,37 @@ public abstract class PageableEntityController<T> implements JSFController {
     public void setEntity(T entity) {
         this.entity = entity;
     }
-    
+
     public String saveEntity() {
-        if (getEntityId() != null){
+        if (getEntityId() != null) {
             doUpdateEntity();
         } else {
             doPersistEntity();
         }
         return getListPage();
     }
-    
+
     @Override
-    public void onPreRender(){
+    public void onPreRender() {
         setEntity(loadEntity(getEntityId()));
     }
-    
+
     @Override
     public String getDetailHeader() {
-        if (getEntity() != null){
+        if (getEntity() != null) {
             return "Edit a " + getEntity().getClass().getSimpleName();
         }
         return "Create a new data";
     }
-    
+
     public abstract List<T> getEntities();
-    
+
     protected abstract T loadEntity(Long entityId);
-    
+
     protected abstract T doUpdateEntity();
-    
+
     protected abstract void doPersistEntity();
-    
+
     protected abstract String getNoEntityMessage();
-    
+
 }

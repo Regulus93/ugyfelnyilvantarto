@@ -14,25 +14,25 @@ public class AddressService {
 
     @Inject
     private AddressDaoImpl addressDaoImpl;
-    
+
     public void createAddress(Address address) {
         addressDaoImpl.create(address);
     }
-    
-    public Address getAddress(Long addressId){
+
+    public Address getAddress(Long addressId) {
         return addressDaoImpl.read(addressId);
     }
-    
-    public Address editAddress(Address address){
+
+    public Address editAddress(Address address) {
         return addressDaoImpl.update(address);
     }
-    
+
     public Address deleteAddress(Address address) {
         return addressDaoImpl.delete(address);
     }
-    
+
     public Address getAddressByAllParameters(String city, String country, String zip, String street, String houseNumber) {
         return addressDaoImpl.getAddressByAllParameters(city, country, zip, street, houseNumber);
     }
-    
+
 }

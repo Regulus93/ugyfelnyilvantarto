@@ -1,8 +1,6 @@
 package com.codingmentorteam3.dtos;
 
 import com.codingmentorteam3.entities.VisitorCount;
-import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
@@ -11,7 +9,7 @@ import java.util.Objects;
  * @author istvan.mosonyi
  */
 public class VisitorCountDTO {
-    
+
     private Long id;
 
     private Date day;

@@ -79,7 +79,6 @@ public class ConnectionChannelController extends PageableEntityController<Connec
         connectionChannelService.createConnectionChannel(getEntity());
     }
 
-    //at kell nezni hogy helyesen legyen beirva
     @Override
     public String getNoEntityMessage() {
         return "No connection channel found in database!";

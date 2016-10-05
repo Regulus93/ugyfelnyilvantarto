@@ -15,5 +15,5 @@ import javax.interceptor.InterceptorBinding;
 @Retention(RUNTIME)
 @Target({METHOD, TYPE})
 public @interface Logging {
-    
+
 }

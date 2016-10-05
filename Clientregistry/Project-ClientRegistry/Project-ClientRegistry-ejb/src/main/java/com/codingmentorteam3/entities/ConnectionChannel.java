@@ -21,7 +21,6 @@ import javax.persistence.NamedQuery;
  */
 @Entity(name = "connectionchannel_table")
 @NamedQuery(name = "connection.channel.list", query = "SELECT ch FROM connectionchannel_table ch")
-//@NamedQuery(name = "connection.channel.list.by.owner.id", query = "SELECT ch FROM user_table u INNER JOIN u.channels ch WHERE u.id =:id")
 public class ConnectionChannel implements Serializable {
 
     @Id

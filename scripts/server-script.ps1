@@ -13,6 +13,13 @@ if(-Not(Test-Path "C:\WildFly")) {
 	Remove-Item "C:\WildFly\wildfly-10.0.0.Final\standalone\configuration\standalone-full.xml"
 	Copy-Item $PSScriptroot\server-conf-files\standalone-full.xml "C:\WildFly\wildfly-10.0.0.Final\standalone\configuration\"
 
+	#override standalone.xml file
+	Remove-Item "C:\WildFly\wildfly-10.0.0.Final\standalone\configuration\standalone.xml"
+	Copy-Item $PSScriptroot\server-conf-files\standalone.xml "C:\WildFly\wildfly-10.0.0.Final\standalone\configuration\"
+	
+	New-Item "C:\WildFly\wildfly-10.0.0.Final\standalone\images" -type directory
+	Copy-Item $PSScriptroot\server-conf-files\avatar.jpeg "C:\WildFly\wildfly-10.0.0.Final\standalone\images\"
+	
 	#copy configuration files (JDBC driver, module.xml)
 	New-Item "C:\WildFly\wildfly-10.0.0.Final\modules\system\layers\base\org\postgres" -type directory
 	New-Item "C:\WildFly\wildfly-10.0.0.Final\modules\system\layers\base\org\postgres\main" -type directory

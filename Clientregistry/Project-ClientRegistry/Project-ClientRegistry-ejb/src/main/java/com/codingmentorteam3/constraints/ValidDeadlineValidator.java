@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidatorContext;
  *
  * @author istvan.mosonyi
  */
-public class ValidDeadlineValidator 
+public class ValidDeadlineValidator
         implements ConstraintValidator<ValidDeadline, ProjectBean> {
 
     @Override
@@ -18,10 +18,10 @@ public class ValidDeadlineValidator
 
     @Override
     public boolean isValid(ProjectBean projectBean, ConstraintValidatorContext context) {
-        if(projectBean.getStartDate() != null && projectBean.getDeadline() != null) {
+        if (projectBean.getStartDate() != null && projectBean.getDeadline() != null) {
             return projectBean.getStartDate().before(projectBean.getDeadline());
         }
         return true;
     }
-    
+
 }

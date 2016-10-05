@@ -53,7 +53,6 @@ public class UserDaoImpl extends AbstractDao<User> {
         return query.getResultList();
     }
 
-    //ezt meg at kell gondolni, jo-e igy
     public User getUserByUsername(String username) {
         if (null != username) {
             TypedQuery<User> query = em.createNamedQuery("user.by.username", User.class);
@@ -73,7 +72,6 @@ public class UserDaoImpl extends AbstractDao<User> {
         return query.getResultList();
     }
 
-    //szerintem kellene... egy kulon jobb oldalso gombbal
     public List<Note> getNotesListByUserId(Long userId) {
         TypedQuery<Note> query = em.createNamedQuery("user.list.notes.by.id", Note.class);
         query.setParameter("id", userId);

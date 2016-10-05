@@ -22,11 +22,5 @@ public class ConnectionChannelDaoImpl extends AbstractDao<ConnectionChannel> {
         query.setMaxResults(limit);
         return query.getResultList();
     }
-//personban van
-//    public List<ConnectionChannel> getConnectionChannelListByOwnerId(Long ownerId) {
-//        TypedQuery<ConnectionChannel> query = em.createNamedQuery("connection.channel.list.by.owner.id", ConnectionChannel.class);
-//        query.setParameter("id", ownerId);
-//        return query.getResultList();
-//    }
 
 }

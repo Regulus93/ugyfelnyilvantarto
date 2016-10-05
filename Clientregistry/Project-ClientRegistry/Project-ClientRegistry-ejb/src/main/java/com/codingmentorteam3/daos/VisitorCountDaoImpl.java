@@ -2,11 +2,8 @@ package com.codingmentorteam3.daos;
 
 import com.codingmentorteam3.entities.VisitorCount;
 import com.codingmentorteam3.exceptions.query.BadRequestException;
-import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Date;
 import javax.ejb.Stateless;
-import javax.persistence.Query;
 import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
@@ -29,9 +26,9 @@ public class VisitorCountDaoImpl extends AbstractDao<VisitorCount> {
         }
         throw new BadRequestException("The requested date is incorrect");
     }
-    
+
     public void setCountVisitorsPerDay() {
-        
+
     }
 
 }

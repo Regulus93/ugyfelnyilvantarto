@@ -31,13 +31,9 @@ public class ConnectionChannelService {
     public ConnectionChannel deleteConnectionChannel(ConnectionChannel connectionChannel) {
         return connectionChannelDao.delete(connectionChannel);
     }
-    
-    public  List<ConnectionChannel> getConnectionChannelList(Integer limit, Integer offset) {
+
+    public List<ConnectionChannel> getConnectionChannelList(Integer limit, Integer offset) {
         return connectionChannelDao.getConnectionChannelList(limit, offset);
     }
-    //personba eleg
-//    public List<ConnectionChannel> getConnectionChannelListByOwnerId(Long ownerId) {
-//        return channelDao.getConnectionChannelListByOwnerId(ownerId);
-//    }
 
 }

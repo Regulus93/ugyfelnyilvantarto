@@ -10,7 +10,7 @@ import java.util.Objects;
 public class AddressDTO {
 
     private Long id;
-    
+
     private String country;
 
     private String city;

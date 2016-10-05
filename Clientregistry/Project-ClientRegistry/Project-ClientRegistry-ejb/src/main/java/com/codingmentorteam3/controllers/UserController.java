@@ -28,6 +28,7 @@ import com.codingmentorteam3.services.PersonService;
 import com.codingmentorteam3.services.RoleService;
 import com.codingmentorteam3.services.UserService;
 import com.codingmentorteam3.util.UtilBean;
+import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -64,7 +65,6 @@ public class UserController extends PageableEntityController<User> {
     @Inject
     private UtilBean utilBean;
 
-    //user method
     public String registrate(UserBean regUser, ConnectionChannelBean regChannel) throws NoSuchAlgorithmException {
         User newUser = new User(regUser);
         if (null != userService.getUserByUsername(newUser.getUsername())) {
@@ -74,6 +74,8 @@ public class UserController extends PageableEntityController<User> {
         ConnectionChannel newConnectionChannel = new ConnectionChannel(newConnectionChannelBean);
         RoleBean newRoleBean = new RoleBean(newUser);
         Role newRole = new Role(newRoleBean);
+        File uploads = new File(System.getProperty("jboss.home.dir"), "\\standalone\\images\\avatar.jpeg");
+        newUser.setAvatar(uploads.toPath().toString());
         newUser.setPassword(utilBean.sha256coding(newUser.getPassword()));
         newUser.setNumItemPerPage(preSetTableLimitsToNewUser());
         setEntity(newUser);
@@ -96,15 +98,6 @@ public class UserController extends PageableEntityController<User> {
         return "profile.xhtml";
     }
 
-//    //user method
-//    public String getUserById(Long userId) {
-//        User user = userService.getUser(userId);
-//        if (null != user) {
-//            return "";
-//        }
-//        throw new BadRequestException(getNoEntityMessage());
-//    }
-    //user method
     public UserDTO updateUserPersonalInfos(UserBean updateUser, Long userId) throws NoSuchAlgorithmException {
         User oldUser = loadEntity(userId);
         if (null != oldUser) {
@@ -116,7 +109,6 @@ public class UserController extends PageableEntityController<User> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method
     public UserDTO updateUserPassword(UserBean updateUser, String oldPassword, Long userId) throws NoSuchAlgorithmException {
         User oldUser = loadEntity(userId);
         if (null != oldUser) {
@@ -131,7 +123,6 @@ public class UserController extends PageableEntityController<User> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method
     public UserDTO changeAvatar(String newAvatar, Long userId) {
         User currentUser = loadEntity(userId);
         if (null != currentUser) {
@@ -143,7 +134,6 @@ public class UserController extends PageableEntityController<User> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //admin method
     public List<UserDTO> deleteUserById(Long userId) {
         User deleteUser = loadEntity(userId);
         if (null != deleteUser) {
@@ -158,7 +148,6 @@ public class UserController extends PageableEntityController<User> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //user method
     public List<UserDTO> getUsersList() {
         List<UserDTO> userDTOs = new ArrayList();
         for (User u : getEntities()) {
@@ -207,7 +196,6 @@ public class UserController extends PageableEntityController<User> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //ADMIN METHOD
     public List<UserDTO> setUserAdminRoleToRoleTable(Long userId) {
         User currentUser = loadEntity(userId);
         RoleType adminRole = RoleType.ADMIN;
@@ -254,7 +242,6 @@ public class UserController extends PageableEntityController<User> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //ADMIN METHOD
     public List<UserDTO> deleteAdminRoleForThisUser(Long userId) {
         User current = loadEntity(userId);
         RoleType adminRole = RoleType.ADMIN;
@@ -277,7 +264,6 @@ public class UserController extends PageableEntityController<User> {
         throw new BadRequestException(getNoEntityMessage());
     }
 
-    //ADMIN METHOD
     public List<UserDTO> deleteManagerRoleForThisUser(Long userId) {
         User current = loadEntity(userId);
         RoleType managerRole = RoleType.MANAGER;
@@ -328,6 +314,14 @@ public class UserController extends PageableEntityController<User> {
         return userDTOs;
     }
 
+    public long getUserIdByUsername(String username) {
+        return userService.getUserIdByUsername(username);
+    }
+
+    public User getUserByUsername(String username) {
+        return userService.getUserByUsername(username);
+    }
+
     @Override
     protected void doPersistEntity() {
         userService.createUser(getEntity());
@@ -352,7 +346,6 @@ public class UserController extends PageableEntityController<User> {
         return null;
     }
 
-    //atnezni a stringek helyesek-e az alabbi 3 override-nal
     @Override
     public String getListPage() {
         return "login";
